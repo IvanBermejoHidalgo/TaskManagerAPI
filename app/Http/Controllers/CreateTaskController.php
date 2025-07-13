@@ -6,6 +6,7 @@ use App\Services\TaskService;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
+use App\Http\Requests\CreateTaskRequest;
 
 class CreateTaskController extends Controller {
 
@@ -13,15 +14,10 @@ class CreateTaskController extends Controller {
     /**
      * Handle the incoming request.
      */
-    public function __invoke(Request $request): JsonResponse {
+    public function __invoke(CreateTaskRequest $request): JsonResponse {
         //
+        $validated = $request->validated();
         try {
-
-            $validated = $request->validate([
-                'title' => 'required|string',
-                'description' => 'nullable|string',
-                'due_date' => 'nullable|date',
-            ]);
 
             $task = $this->service->createTask($validated);
 
