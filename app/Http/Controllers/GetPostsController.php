@@ -12,8 +12,19 @@ class GetPostsController extends Controller {
     public function __construct(private ExternalApiService $service) {}
 
     /**
-     * Handle the incoming request.
+     * @OA\Get(
+     *     path="/api/external",
+     *     summary="Get posts from external API",
+     *     tags={"External"},
+     *     @OA\Response(
+     *         response=200,
+     *         description="List of posts",
+     *         @OA\JsonContent(type="array", @OA\Items(type="object"))
+     *     ),
+     *     @OA\Response(response=500, description="Server error")
+     * )
      */
+
     public function __invoke(): JsonResponse
     {
         //

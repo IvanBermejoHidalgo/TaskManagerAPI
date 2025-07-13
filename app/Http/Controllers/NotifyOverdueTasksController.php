@@ -15,8 +15,22 @@ use Carbon\Carbon;
 class NotifyOverdueTasksController extends Controller
 {
     /**
-     * Handle the incoming request.
+     * @OA\Get(
+     *     path="/api/notify-overdue",
+     *     summary="Send notifications for overdue tasks",
+     *     tags={"Notifications"},
+     *     @OA\Response(
+     *         response=200,
+     *         description="Notifications sent successfully",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="status", type="string", example="Notificaciones enviadas"),
+     *             @OA\Property(property="cantidad", type="integer", example=3)
+     *         )
+     *     ),
+     *     @OA\Response(response=500, description="Server error")
+     * )
      */
+
     public function __invoke(Request $request): JsonResponse
     {
         //

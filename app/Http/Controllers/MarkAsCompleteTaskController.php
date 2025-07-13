@@ -11,8 +11,29 @@ class MarkAsCompleteTaskController extends Controller {
 
     public function __construct(private TaskService $service) {}
     /**
-     * Handle the incoming request.
+     * @OA\Put(
+     *     path="/api/tasks/complete/{id}",
+     *     summary="Mark a task as complete",
+     *     tags={"Tasks"},
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         description="ID of the task to mark complete",
+     *         required=true,
+     *         @OA\Schema(type="integer")
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Task marked as complete",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="id", type="integer"),
+     *             @OA\Property(property="completed", type="boolean")
+     *         )
+     *     ),
+     *     @OA\Response(response=500, description="Server error")
+     * )
      */
+
     public function __invoke(int $id): JsonResponse
     {
         //
