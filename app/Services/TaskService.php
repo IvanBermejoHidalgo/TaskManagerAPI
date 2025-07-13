@@ -47,6 +47,7 @@ class TaskService {
                 'description' => $data['description'] ?? '',
                 'due_date' => $data['due_date'] ?? null,
                 'completed' => false,
+                'user_id' => $data['user_id'],
             ]);
 
         } catch (\Exception $e) {

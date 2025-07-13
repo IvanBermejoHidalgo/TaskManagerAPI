@@ -25,7 +25,8 @@ class CreateTaskRequest extends FormRequest
             //
             'title' => 'required|string',
             'description' => 'nullable|string',
-            'due_date' => 'nullable|date', 
+            'due_date' => 'nullable|date',
+            'user_id' => 'required|exists:users,id'
         ];
     }
 
